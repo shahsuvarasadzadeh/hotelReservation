@@ -9,4 +9,8 @@ public interface HR_Interface {
      void addHotel(HR_Add_DTO hrAddDto);
 
      List<HR_Entity> getAllHotels();
+
+     HR_Entity getHotelsById(Long id);
+
+     void deleteHotelsById(Long id);
 }

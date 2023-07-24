@@ -19,15 +19,18 @@ public class HR_Controller {
     }
 
     @PostMapping(path = "/addHotel")
-    public String addHotel(@RequestBody HR_Add_DTO hrAddDto) {
+    public void addHotel(@RequestBody HR_Add_DTO hrAddDto) {
         hrInterface.addHotel(hrAddDto);
-        return "hr";
     }
     @GetMapping(path = "/allHotel")
     public String allHotels(Model model){
         final List<HR_Entity> hrEntities=hrInterface.getAllHotels();
         model.addAttribute("Hotels",hrEntities);
         return "hr";
+    }
+    @DeleteMapping(path = "/delete/{id}")
+    public void deleteHotel(@PathVariable Long id,Model model){
+        hrInterface.deleteHotelsById(id);
     }
 
 }
