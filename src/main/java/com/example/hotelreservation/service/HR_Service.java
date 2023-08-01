@@ -8,7 +8,9 @@ import com.example.hotelreservation.repository.HR_Repository;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 
@@ -20,16 +22,17 @@ public class HR_Service implements HR_Interface{
     }
 
     @Override
-    public void addHotel(HR_Add_DTO hrAddDto) {
+    public HR_Entity addHotel(HR_Add_DTO hrAddDto) {
         final HR_Entity hrEntity;
         hrEntity = hrRepository.save(new HR_Entity(hrAddDto.getName(),
                 hrAddDto.getLocation(), hrAddDto.getStar()));
-        HR_DTO.of(hrEntity);
+        return hrEntity;
     }
 
     @Override
-    public List<HR_Entity> getAllHotels() {
-        return hrRepository.findAll();
+    public Set<HR_Entity> getAllHotels() {
+        List<HR_Entity> hrEntities=hrRepository.findAll();
+        return new HashSet<>(hrEntities);
     }
 
     @Override
@@ -41,7 +44,7 @@ public class HR_Service implements HR_Interface{
     public void deleteHotelsById(Long id) {
         final HR_Entity hr = hrRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("user not found"));
-        hrRepository.deleteById(hr.getId());
+        hrRepository.delete(hr);
     }
 
 }
