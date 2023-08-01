@@ -42,6 +42,7 @@ dependencies {
 
     // SpringDoc OpenAPI Starter for WebMVC (Swagger UI)
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2'
+
 }
 
 tasks.named('test') {
