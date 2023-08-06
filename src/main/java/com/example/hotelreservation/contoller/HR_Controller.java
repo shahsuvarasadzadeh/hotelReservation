@@ -23,4 +23,14 @@ public class HR_Controller {
     public void deleteHotel(@PathVariable Long id){
         hrInterface.deleteHotelsById(id);
     }
+    @GetMapping(path = "/search/{id}")
+    public HR_Entity hotelById(@PathVariable Long id){
+        HR_Entity hr=hrInterface.getHotelsById(id);
+        return hr;
+    }
+    @PutMapping(path = "/update/{id}")
+    public HR_Entity updateHotel(@PathVariable Long id,@RequestBody HR_Add_DTO hrAddDto){
+        HR_Entity hr=hrInterface.updateHotl(id,hrAddDto);
+        return hr;
+    }
 }
