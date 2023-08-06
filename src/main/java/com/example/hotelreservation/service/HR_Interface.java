@@ -1,5 +1,6 @@
 package com.example.hotelreservation.service;
 import com.example.hotelreservation.dto.HR_Add_DTO;
+import com.example.hotelreservation.dto.HR_DTO;
 import com.example.hotelreservation.model.HR_Entity;
 import java.util.Set;
 public interface HR_Interface {
@@ -7,4 +8,6 @@ public interface HR_Interface {
      Set<HR_Entity> getAllHotels();
      HR_Entity getHotelsById(Long id);
      void deleteHotelsById(Long id);
+
+     HR_Entity updateHotl(Long id,HR_Add_DTO hrAddDto);
 }
