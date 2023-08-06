@@ -1,6 +1,8 @@
 package com.example.hotelreservation.dto;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 @Data
+@NoArgsConstructor
 public class HR_Add_DTO {
     private String name;
     private String location;
